@@ -53,7 +53,7 @@ string Sistema::login(const string email, const string senha) {
         if(usuarios_root[i].getSenha() == senha){ // Verifica se a senha para aquele email está correta
 
             usuarioLogadoId = usuarios_root[i].getId(); // Se p email e a senha forem corretos pega o Id do usuario logado e salva na variavel
-            cout << "“Logado como: " << usuarios_root[i].getEmail() << " de Id: " << usuarioLogadoId;
+            cout << "Logado como: " << usuarios_root[i].getEmail() << " de Id: " << usuarioLogadoId;
             return " !";
         }
     }
@@ -152,8 +152,10 @@ string Sistema::list_servers(){
     for(size_t i = 0; i < servidores_root.size(); i++){ 
       cout << servidores_root[i].getNome() << endl;
     }
+    return "lista de servidores impressa";
   }
-  return "";
+  
+  return "Não há usuário conectado, favor realizar login para poder remover um servidor";
 }
 
 string Sistema::remove_server(const string nome) {
