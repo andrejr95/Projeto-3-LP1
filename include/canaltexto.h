@@ -12,6 +12,11 @@ class CanalTexto : public Canal{
 	private:
 		vector <Mensagem> mensagens;
 
+	public:
+        CanalTexto();
+        CanalTexto(string nome_ , int  tipo_canal_ ) : Canal(nome_, tipo_canal_){};
+        ~CanalTexto(){}
+
 };
 
 #endif

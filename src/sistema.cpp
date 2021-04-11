@@ -3,13 +3,21 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include <ctime>
 #include "sistema.h"
 #include "servidor.h"
-#include "usuario.h"  
+#include "usuario.h"
+#include "canal.h"
+#include "canaltexto.h"
+#include "canalvoz.h"
+#include "mensagem.h"
+#include "date.h"
+
 
 using namespace std;
 
 int contadorId_Usuario = 1;
+string dataHora;
 
 Sistema::Sistema(){
     usuarioLogadoId = 0;   // id de usuario para salvar quem está conectado - 0 para ninguem 
@@ -224,7 +232,8 @@ string Sistema::leave_server() {
           }
         }  
       }
-      nomeServidorConectado ="";
+      nomeServidorConectado = "";
+      nomeCanalConectado = "";
       return "";
     }
     else{
@@ -264,27 +273,126 @@ string Sistema::list_participants() {
 
 
 string Sistema::list_channels() {
-  return "list_channels NÃO IMPLEMENTADO";
+
+  if(usuarioLogadoId != 0){
+    if(nomeServidorConectado != ""){
+      for(size_t i = 0; i < servidores_root.size(); i++){
+        if(servidores_root[i].getNome() == nomeServidorConectado){
+          if(servidores_root[i].getSizeCanais() == 0){
+            return "Não há canais no servidor!";
+          }
+          cout << "#canais de texto" << endl;
+          servidores_root[i].getTexto();
+          cout << "#canais de voz" << endl;
+          servidores_root[i].getVoz();
+        }  
+      }
+      return "#lista de canais impressa";
+    }
+    return "Não há servidor conectado";
+  }
+  return "Não há usuário conectado, favor realizar login para poder remover um servidor";
 }
 
 string Sistema::create_channel(const string nome, const string tipo) {
-  return "create_channel NÃO IMPLEMENTADO";
+
+  if(tipo != "texto" && tipo != "voz"){
+    return "Tipo de canal inválido, favor escolhor texto ou voz";
+  }
+
+  if(usuarioLogadoId != 0){
+    if(nomeServidorConectado != ""){
+      for(size_t i = 0; i < servidores_root.size(); i++){
+        if(servidores_root[i].getNome() == nomeServidorConectado){
+          for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
+            if(servidores_root[i].ComparaNomeCanais(nome) == true){
+              return "O canal de nome: " + nome + " já existe";
+            }
+          }
+          if(tipo == "texto"){
+            CanalTexto *auxTexto = new CanalTexto(nome,1);
+            servidores_root[i].pushCanal(auxTexto);
+            return "O canal de " + tipo + ": " + nome + " criado com sucesso";
+          }
+          if(tipo == "voz"){
+            CanalVoz *auxVoz = new CanalVoz(nome,2);
+            servidores_root[i].pushCanal(auxVoz);
+            return "O canal de "+ tipo + ": " + nome + " criado com sucesso";
+          }
+        }  
+      } 
+    }
+    return "Não há servidor conectado";
+  }
+  return "Não há usuário conectado, favor realizar login para poder criar um canal";    
+  
 }
+  
 
 string Sistema::enter_channel(const string nome) {
-  return "enter_channel NÃO IMPLEMENTADO";
+
+  if(usuarioLogadoId != 0){
+    if(nomeServidorConectado != ""){
+      for(size_t i = 0; i < servidores_root.size(); i++){
+        if(servidores_root[i].getNome() == nomeServidorConectado){
+          for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
+            if(servidores_root[i].getNomeCanais(j) == nome){
+              nomeCanalConectado = nome;
+              return "Entrou no canal: " + nome;
+            }
+            return "Canal: " + nome + " não existe";
+          }
+        }       
+      } 
+    }
+    return "Não há servidor conectado";
+  }
+  return "Não há usuário conectado, favor realizar login para poder entrar em um canal";    
 }
 
 string Sistema::leave_channel() {
-  return "leave_channel NÃO IMPLEMENTADO";
+  if(usuarioLogadoId == 0){
+    return "Não há usuário conectado";
+  }
+  if(nomeServidorConectado == ""){
+    return "Não há Servidor conectado";
+  }
+  if(nomeCanalConectado == ""){
+    return "Não há canal conectado";
+  }
+  cout << "Saindo do canal: " << nomeCanalConectado;
+  nomeCanalConectado = "";
+  return "!";
 }
 
 string Sistema::send_message(const string mensagem) {
-  return "send_message NÃO IMPLEMENTADO";
+
+  dataHora = date::format("%F %T", chrono::system_clock::now());
+
+  if(usuarioLogadoId == 0){
+    return "Não há usuário conectado";
+  }
+  if(nomeServidorConectado == ""){
+    return "Não há Servidor conectado";
+  }
+  if(nomeCanalConectado == ""){
+    return "Não há canal conectado";
+  } 
+
+  for(size_t i = 0; i < servidores_root.size(); i++){
+    if(servidores_root[i].getNome() == nomeServidorConectado){
+      for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
+        if(servidores_root[i].getNomeCanais(j) == nomeCanalConectado){
+          Mensagem auxMensagem(dataHora, usuarioLogadoId, mensagem);
+          return "Em construção";
+        }
+        return "Canal não existe";
+      }
+    }       
+  } 
+  return "eror!";
 }
 
 string Sistema::list_messages() {
   return "list_messages NÃO IMPLEMENTADO";
 }
-
-

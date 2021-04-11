@@ -11,6 +11,11 @@ class CanalVoz : public Canal{
 	private:
 		Mensagem ultimaMensagem;
 
+	public:
+        CanalVoz();
+        CanalVoz(string  nome_ , int  tipo_canal_ ) : Canal(nome_, tipo_canal_){};
+        ~CanalVoz(){}
 };
+
 
 #endif

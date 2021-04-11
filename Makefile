@@ -31,7 +31,7 @@ bin/executor.o:  src/executor.cpp include/executor.h include/sistema.h
 bin/mensagem.o:  src/mensagem.cpp include/mensagem.h
 	$(CC) $(CFLAGS) -c src/mensagem.cpp -o bin/mensagem.o
 
-bin/sistema.o:  src/sistema.cpp include/sistema.h include/servidor.h include/usuario.h
+bin/sistema.o:  src/sistema.cpp include/sistema.h include/servidor.h include/usuario.h include/date.h include/canal.h include/canaltexto.h include/canalvoz.h 
 	$(CC) $(CFLAGS) -c src/sistema.cpp -o bin/sistema.o
 
 

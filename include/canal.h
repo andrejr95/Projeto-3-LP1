@@ -7,15 +7,18 @@ using namespace std;
 class Canal {
   protected:
     string nome;
-
+    int tipo_canal; // recebera valor 1 para canais de texto e valor 2 para canais de voz
   public:
     Canal(); // construtor padrão
-    Canal (string nome_); 
-    ~Canal(); // destrutor
+    Canal (string nome_, int tipo_canal_); 
+    virtual ~Canal(); // destrutor
     //getters
-    string getNome()const;     
+    virtual string getNomeCanal()const;
+    virtual int getTipo_canal()const;       
     //setters
-    void setNome(string nome_);
+    virtual void setNome(string const nome_);
+    virtual void setTipo_canal(int const tipo_canal_);
+
 
 };
 
