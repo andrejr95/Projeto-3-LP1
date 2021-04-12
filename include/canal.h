@@ -19,7 +19,6 @@ class Canal {
     virtual void setNome(string const nome_);
     virtual void setTipo_canal(int const tipo_canal_);
 
-
 };
 
 #endif

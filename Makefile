@@ -40,7 +40,10 @@ run: default
 	./concordo_exec
 
 run_script: default
-	./concordo_exec < script_comandos.txt	
+	./concordo_exec < script_comandos.txt
+
+run_script2: default
+	./concordo_exec < script_comandos_parte2.txt	
 
 
 clean: 

@@ -1,0 +1,41 @@
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+enter-channel casa-de-mae-joana
+leave-channel
+create-user teste1@imd.ufrn.br 123 nome1
+create-user teste2@imd.ufrn.br 123 nome2
+login teste1@imd.ufrn.br 123
+create-server server1
+create-server server2
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+enter-channel casa-de-mae-joana
+leave-channel
+enter-server server1
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+create-channel casa-de-mae-joana2 texto
+create-channel casa-de-mae-joana3 texto
+create-channel casa-de-mae-joana4 voz
+list-channels
+enter-channel casa-de-mae-joana
+leave-channel
+enter-channel casa-de-mae-joana2
+enter-channel casa-de-mae-joana7
+enter-server server2
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+create-channel casa-de-mae-joana2 texto
+create-channel casa-de-mae-joana3 texto
+create-channel casa-de-mae-joana4 voz
+list-channels
+enter-channel casa-de-mae-joana
+leave-channel
+enter-channel casa-de-mae-joana2
+enter-channel casa-de-mae-joana7
+quit
+create-user naodeveprocessar@imd.ufrn.br naodevechegaraqui Não deve chegar aqui

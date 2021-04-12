@@ -384,6 +384,12 @@ string Sistema::send_message(const string mensagem) {
       for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
         if(servidores_root[i].getNomeCanais(j) == nomeCanalConectado){
           Mensagem auxMensagem(dataHora, usuarioLogadoId, mensagem);
+          if(servidores_root[i].getTipo_canal(j) == 1){                    // condição para nais de texto
+
+          }
+          if(servidores_root[i].getTipo_canal(j) == 2){                    // condição para nais de voz
+            
+          }
           return "Em construção";
         }
         return "Canal não existe";

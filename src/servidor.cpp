@@ -29,6 +29,10 @@ string Servidor::getNomeCanais(int j) const{
     return canais[j]->getNomeCanal();
 }
 
+int Servidor::getTipo_canal(int j) const{
+    return canais[j]->getTipo_canal();
+}
+
 string Servidor::getDescricao() const{
     return descricao;
 }
@@ -120,3 +124,4 @@ bool Servidor::ComparaNomeCanais(string nome) const{      //percorre o vetor can
 return false;
 
 }
+

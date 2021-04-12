@@ -36,7 +36,79 @@ Para limpar os arquivos .o e o executável criado pelo make basta digitar no con
 ```console
 make clean
 ```
+Parte 2:
+Um exemplo para rodar o programa já está disponivel no documento script_comandos_parte2.txt
 
+para compilalo basta usar o comando
+```console
+./concordo < script_comandos_parte2.txt
+
+```
+ou
+
+```console
+make run_script2
+```
+
+Dentre as dificuldades, a principal foi a do uso de herança de classes, aonde não soube como acessar para incluir as mensagens nas classes filhas canaltexto e canalvoz, em parte
+devido ao fato da classe pai canal estar sendo chamada como ponteiro.
+nos arquivos canaltexto.cpp e canalvoz.cpp se encontram uma tentativa que não foi implementada para não comprometer o funcionamento das outras funções.
+
+segue o roteiro do script_comandos_parte2.txt
+
+// testes das funções sem usuario logado
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+enter-channel casa-de-mae-joana
+leave-channel
+
+create-user teste1@imd.ufrn.br 123 nome1
+create-user teste2@imd.ufrn.br 123 nome2
+login teste1@imd.ufrn.br 123
+create-server server1
+create-server server2
+
+//testes das funções sem servidor logado
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+enter-channel casa-de-mae-joana
+leave-channel
+enter-server server1
+
+//testes das funções sem canal logado
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+create-channel casa-de-mae-joana2 texto
+create-channel casa-de-mae-joana3 texto
+create-channel casa-de-mae-joana4 voz
+list-channels
+enter-channel casa-de-mae-joana
+leave-channel
+enter-channel casa-de-mae-joana2
+enter-channel casa-de-mae-joana7
+
+//testes das funções em outro servidor usando os mesmos nomes
+enter-server server2
+list-channels
+create-channel casa-de-mae-joana texto
+create-channel casa-de-mae-joana2 voz
+create-channel casa-de-mae-joana2 texto
+create-channel casa-de-mae-joana3 texto
+create-channel casa-de-mae-joana4 voz
+list-channels
+enter-channel casa-de-mae-joana
+leave-channel
+enter-channel casa-de-mae-joana2
+enter-channel casa-de-mae-joana7
+quit
+create-user naodeveprocessar@imd.ufrn.br naodevechegaraqui Não deve chegar aqui
+
+
+
+Parte 1:
 Um exemplo para rodar o programa já está disponivel no documento script_comandos.txt
 
 Outro exemplo disponivel:

@@ -19,5 +19,5 @@ void CanalTexto::pushMensagens(Mensagem msg){
 }
 
 vector<Mensagem> CanalTexto::getMensagens(){
-	return this->mensagens;s
+	return this->mensagens;
 }

@@ -25,6 +25,7 @@ class Servidor {
                 int getUsuarioDonoId();
                 string getNome() const;
                 string getNomeCanais(int j) const;
+                int getTipo_canal(int j) const;
                 string getDescricao() const;
                 string getCodigoConvite() const;
                 long unsigned int getSize() const; // retorna tamanho do vetor participantesIds
@@ -42,7 +43,8 @@ class Servidor {
                 //bool criaCanal( shared_ptr <Canal> const canal);
                 bool isUsuarioLogado(int id);
                 void removeId(int i); 
-                bool ComparaNomeCanais(string nome) const;     
+                bool ComparaNomeCanais(string nome) const; 
+                
 };
 
 #endif

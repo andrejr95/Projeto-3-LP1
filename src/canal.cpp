@@ -33,3 +33,4 @@ void Canal::setTipo_canal(int tipo_canal_){
 int Canal::getTipo_canal()const{
     return tipo_canal;
 }
+

@@ -14,7 +14,13 @@ class CanalVoz : public Canal{
 	public:
         CanalVoz();
         CanalVoz(string  nome_ , int  tipo_canal_ ) : Canal(nome_, tipo_canal_){};
-        ~CanalVoz(){}
+        ~CanalVoz(){};
+        
+        void inserirUltimaMensagem(string dataHora, int enviadaPor, string conteudo){ 
+			ultimaMensagem.setDataHora(dataHora);
+			ultimaMensagem.setEnviadaPor(enviadaPor);
+			ultimaMensagem.setConteudo(conteudo);
+		}
 };
 
 
