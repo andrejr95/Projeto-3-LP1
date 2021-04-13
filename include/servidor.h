@@ -3,9 +3,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "mensagem.h"
 #include "canal.h"
 #include "canaltexto.h"
 #include "canalvoz.h"
+
 
 using namespace std;
 
@@ -33,6 +35,7 @@ class Servidor {
                 int getId(int i) const;
                 string getTexto() const; //percorre o vetor canais e imprime os canais de voz (Tipo_canal = 2)
                 string getVoz() const; //percorre o vetor canais e imprime os canais de texto (Tipo_canal = 1)
+                string getMensagens(int j) const; //imprime as mensagens do canal na posição j
                 //setters
                 void setNome(string const nome_);
                 void setDescricao(string const descricao_);
@@ -44,6 +47,7 @@ class Servidor {
                 bool isUsuarioLogado(int id);
                 void removeId(int i); 
                 bool ComparaNomeCanais(string nome) const; 
+                void inserirUltimaMensagem(int j, Mensagem msg) const;
                 
 };
 

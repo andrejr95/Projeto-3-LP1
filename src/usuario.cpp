@@ -42,4 +42,3 @@ void Usuario::setEmail(string const email_){
 void Usuario::setSenha(string const senha_){
     senha = senha_;
 }
-

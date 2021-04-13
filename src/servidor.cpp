@@ -1,5 +1,8 @@
 #include <string>
-#include "servidor.h"  
+#include "servidor.h"
+#include "mensagem.h"
+#include "canal.h" 
+#include "canaltexto.h" 
 
 using namespace std;
 
@@ -123,5 +126,16 @@ bool Servidor::ComparaNomeCanais(string nome) const{      //percorre o vetor can
   }  
 return false;
 
+}
+
+void Servidor::inserirUltimaMensagem(int j, Mensagem msg) const{
+    canais[j]->inserirUltimaMensagem(msg);
+}
+
+string Servidor::getMensagens(int j) const{       //percorre o vetor canais e imprime os canais de voz (Tipo_canal = 2)
+
+  canais[j]->getMensagens();
+  
+  return "#Fim das mensagens!";
 }
 

@@ -340,7 +340,6 @@ string Sistema::enter_channel(const string nome) {
               nomeCanalConectado = nome;
               return "Entrou no canal: " + nome;
             }
-            return "Canal: " + nome + " não existe";
           }
         }       
       } 
@@ -367,7 +366,7 @@ string Sistema::leave_channel() {
 
 string Sistema::send_message(const string mensagem) {
 
-  dataHora = date::format("%F %T", chrono::system_clock::now());
+  dataHora = date::format("%F %T", chrono::system_clock::now()); // função que pega a data e horario atual e retorna em formato de string
 
   if(usuarioLogadoId == 0){
     return "Não há usuário conectado";
@@ -384,21 +383,37 @@ string Sistema::send_message(const string mensagem) {
       for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
         if(servidores_root[i].getNomeCanais(j) == nomeCanalConectado){
           Mensagem auxMensagem(dataHora, usuarioLogadoId, mensagem);
-          if(servidores_root[i].getTipo_canal(j) == 1){                    // condição para nais de texto
-
-          }
-          if(servidores_root[i].getTipo_canal(j) == 2){                    // condição para nais de voz
-            
-          }
-          return "Em construção";
+          servidores_root[i].inserirUltimaMensagem(j, auxMensagem);
+          return "Mensagem: " + mensagem + " enviada com sucesso";      
         }
         return "Canal não existe";
       }
     }       
   } 
-  return "eror!";
+  return "error!";
 }
 
 string Sistema::list_messages() {
-  return "list_messages NÃO IMPLEMENTADO";
+  if(usuarioLogadoId == 0){
+    return "Não há usuário conectado";
+  }
+  if(nomeServidorConectado == ""){
+    return "Não há Servidor conectado";
+  }
+  if(nomeCanalConectado == ""){
+    return "Não há canal conectado";
+  } 
+
+  for(size_t i = 0; i < servidores_root.size(); i++){
+    if(servidores_root[i].getNome() == nomeServidorConectado){
+      for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
+        if(servidores_root[i].getNomeCanais(j) == nomeCanalConectado){
+            servidores_root[i].getMensagens(j);
+          return "Mensagem:  enviada com sucesso";      
+        }
+      }
+    }       
+  } 
+  return "error!";
+  
 }

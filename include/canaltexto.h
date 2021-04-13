@@ -14,8 +14,10 @@ class CanalTexto : public Canal{
 
 	public:
         CanalTexto();
-        CanalTexto(string nome_ , int  tipo_canal_ ) : Canal(nome_, tipo_canal_){};
-        ~CanalTexto(){};
+        CanalTexto(string nome_ , int  tipo_canal_ );
+        ~CanalTexto();
+        virtual void inserirUltimaMensagem(Mensagem msg);
+        virtual vector <Mensagem> getMensagens();
 
 };
 

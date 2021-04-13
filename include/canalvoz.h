@@ -2,6 +2,7 @@
 #define CANALVOZ_H
 #include <iostream>
 #include <string>
+#include <vector>
 #include "mensagem.h"
 #include "canal.h"   
 
@@ -13,14 +14,11 @@ class CanalVoz : public Canal{
 
 	public:
         CanalVoz();
-        CanalVoz(string  nome_ , int  tipo_canal_ ) : Canal(nome_, tipo_canal_){};
-        ~CanalVoz(){};
+        CanalVoz(string  nome_ , int  tipo_canal_ );
+        ~CanalVoz();
         
-        void inserirUltimaMensagem(string dataHora, int enviadaPor, string conteudo){ 
-			ultimaMensagem.setDataHora(dataHora);
-			ultimaMensagem.setEnviadaPor(enviadaPor);
-			ultimaMensagem.setConteudo(conteudo);
-		}
+        virtual void inserirUltimaMensagem(Mensagem msg);
+        virtual vector <Mensagem> getMensagens();
 };
 
 

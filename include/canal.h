@@ -2,6 +2,9 @@
 #define CANAL_H
 #include <iostream>
 #include <string>
+#include <vector>
+#include "mensagem.h" 
+
 using namespace std;
 
 class Canal {
@@ -18,6 +21,8 @@ class Canal {
     //setters
     virtual void setNome(string const nome_);
     virtual void setTipo_canal(int const tipo_canal_);
+    virtual void inserirUltimaMensagem(Mensagem msg) = 0;
+    virtual vector <Mensagem> getMensagens()  = 0;
 
 };
 
