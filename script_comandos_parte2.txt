@@ -37,5 +37,17 @@ enter-channel casa-de-mae-joana
 leave-channel
 enter-channel casa-de-mae-joana2
 enter-channel casa-de-mae-joana7
+enter-channel casa-de-mae-joana
+list-messages
+send-message Oi pessoal querem TC?
+send-message teste de mensagem 2
+send-message teste de mensagem 3
+login teste2@imd.ufrn.br 123
+send-message teste de mensagem 4
+send-message teste de mensagem 5
+login teste1@imd.ufrn.br 123
+send-message teste de mensagem 6
+send-message teste de mensagem 7
+list-messages
 quit
 create-user naodeveprocessar@imd.ufrn.br naodevechegaraqui Não deve chegar aqui

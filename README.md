@@ -50,9 +50,8 @@ ou
 make run_script2
 ```
 
-Dentre as dificuldades, a principal foi a do uso de herança de classes, aonde não soube como acessar para incluir as mensagens nas classes filhas canaltexto e canalvoz, em parte
-devido ao fato da classe pai canal estar sendo chamada como ponteiro.
-nos arquivos canaltexto.cpp e canalvoz.cpp se encontram uma tentativa que não foi implementada para não comprometer o funcionamento das outras funções.
+Dentre as dificuldades, as principais foram acessar as informação da classe filha, em parte devido ao fato da classe pai estar sendo usada como ponteiro no vetor.
+Na função list-messages não consegui fazer que seja exibido o nome de quem enviou apenas seu ID.
 
 segue o roteiro do script_comandos_parte2.txt
 
@@ -102,7 +101,22 @@ list-channels
 enter-channel casa-de-mae-joana
 leave-channel
 enter-channel casa-de-mae-joana2
-enter-channel casa-de-mae-joana7
+enter-channel casa-de-mae-joana8
+enter-channel casa-de-mae-joana
+list-messages // teste para mostrar a mensagem de que "Não há mensagens no canal conectado"
+
+// para melhor observar a diferença nos horarios realizar esses testes manualmente no Terminal
+
+send-message Oi pessoal querem TC?
+send-message teste de mensagem 2
+send-message teste de mensagem 3
+login teste2@imd.ufrn.br 123
+send-message teste de mensagem 4
+send-message teste de mensagem 5
+login teste1@imd.ufrn.br 123
+send-message teste de mensagem 6
+send-message teste de mensagem 7
+list-messages
 quit
 create-user naodeveprocessar@imd.ufrn.br naodevechegaraqui Não deve chegar aqui
 

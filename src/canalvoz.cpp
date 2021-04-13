@@ -23,9 +23,15 @@ void CanalVoz::inserirUltimaMensagem(Mensagem msg){
 	ultimaMensagem.setConteudo(msg.getConteudo());
 }
 
-vector<Mensagem> CanalVoz::getMensagens(){
-	vector <Mensagem> aux;
-	aux.push_back(ultimaMensagem);
-	cout << ultimaMensagem.getEnviadaPor() << " - " << ultimaMensagem.getDataHora() << " - " << ultimaMensagem.getConteudo()<< endl;
-	return aux;
+void CanalVoz::getMensagens(){
+
+	cout << "ID: " << ultimaMensagem.getEnviadaPor() << " - " << ultimaMensagem.getDataHora() << " - " << ultimaMensagem.getConteudo()<< endl;
+}
+
+bool CanalVoz::isMensagemVazia(){
+	
+	if(ultimaMensagem.getConteudo() == ""){
+    return true;
+}
+return false;
 }

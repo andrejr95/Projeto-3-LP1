@@ -135,7 +135,14 @@ void Servidor::inserirUltimaMensagem(int j, Mensagem msg) const{
 string Servidor::getMensagens(int j) const{       //percorre o vetor canais e imprime os canais de voz (Tipo_canal = 2)
 
   canais[j]->getMensagens();
-  
+
   return "#Fim das mensagens!";
 }
 
+bool Servidor::isMensagemVazia(int j) {
+    if(canais[j]->isMensagemVazia() == true){
+      return true;
+    }
+
+    return false;
+}

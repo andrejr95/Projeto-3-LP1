@@ -17,7 +17,8 @@ class CanalTexto : public Canal{
         CanalTexto(string nome_ , int  tipo_canal_ );
         ~CanalTexto();
         virtual void inserirUltimaMensagem(Mensagem msg);
-        virtual vector <Mensagem> getMensagens();
+        virtual void getMensagens();
+        virtual bool isMensagemVazia();
 
 };
 

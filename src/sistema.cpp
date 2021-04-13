@@ -11,13 +11,14 @@
 #include "canaltexto.h"
 #include "canalvoz.h"
 #include "mensagem.h"
-#include "date.h"
+
 
 
 using namespace std;
 
-int contadorId_Usuario = 1;
-string dataHora;
+int contadorId_Usuario = 1; // variavel para declarar o ID do usuario a ser criado
+char dataHora[40];  // variavel para salvar a data e hora das mensagens enviadas
+
 
 Sistema::Sistema(){
     usuarioLogadoId = 0;   // id de usuario para salvar quem está conectado - 0 para ninguem 
@@ -365,8 +366,9 @@ string Sistema::leave_channel() {
 }
 
 string Sistema::send_message(const string mensagem) {
-
-  dataHora = date::format("%F %T", chrono::system_clock::now()); // função que pega a data e horario atual e retorna em formato de string
+  
+  time_t auxtempo = time(nullptr); // recebe a data e hora atual
+  strftime(dataHora, 40, "%d/%m/%Y - %X", localtime(&auxtempo));  // função da biblioteca ctime que devolve a data e hora em string
 
   if(usuarioLogadoId == 0){
     return "Não há usuário conectado";
@@ -404,12 +406,18 @@ string Sistema::list_messages() {
     return "Não há canal conectado";
   } 
 
+  if(servidores_root.size() == 0){
+    return "Não há mensagens no canal conectado";
+  } 
   for(size_t i = 0; i < servidores_root.size(); i++){
     if(servidores_root[i].getNome() == nomeServidorConectado){
       for(size_t j = 0; j < servidores_root[i].getSizeCanais(); j++){
         if(servidores_root[i].getNomeCanais(j) == nomeCanalConectado){
+            if(servidores_root[i].isMensagemVazia(j) == true){
+              return "Sem mensagens para exibir no canal!";
+            } 
             servidores_root[i].getMensagens(j);
-          return "Mensagem:  enviada com sucesso";      
+            return "Mensagens impressas com sucesso";      
         }
       }
     }       

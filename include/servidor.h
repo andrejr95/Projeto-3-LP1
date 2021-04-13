@@ -48,6 +48,7 @@ class Servidor {
                 void removeId(int i); 
                 bool ComparaNomeCanais(string nome) const; 
                 void inserirUltimaMensagem(int j, Mensagem msg) const;
+                bool isMensagemVazia(int j);
                 
 };
 

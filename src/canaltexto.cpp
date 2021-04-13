@@ -21,19 +21,15 @@ void CanalTexto::inserirUltimaMensagem(Mensagem msg){
 	mensagens.push_back(msg);
 }
 
-vector<Mensagem> CanalTexto::getMensagens(){
+void CanalTexto::getMensagens(){
 	for(size_t j = 0; j < mensagens.size(); j++){
-  	cout << mensagens[j].getEnviadaPor() << " - " << mensagens[j].getDataHora() << " - " << mensagens[j].getConteudo()<< endl; 
+  	cout << "ID: " << mensagens[j].getEnviadaPor() << " - " << mensagens[j].getDataHora() << " - " << mensagens[j].getConteudo()<< endl; 
   	} 
-	return mensagens;
 }
 
-/*
-string Servidor::getVoz() const{       //percorre o vetor canais e imprime os canais de voz (Tipo_canal = 2)
-
-  for(size_t j = 0; j < mensagens.size(); j++){
-  	cout << mensagens[j].getEnviadaPor() << " - " << mensagens[j].getDataHora() << " - " << mensagens[j].getConteudo()<< endl; 
-    
-  }  
-return "#Fim das mensagens de texto!";
-}*/
+ bool CanalTexto::isMensagemVazia(){
+ 	if(mensagens.empty()){
+        return true;
+    }
+    return false;
+ }

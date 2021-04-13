@@ -18,7 +18,8 @@ class CanalVoz : public Canal{
         ~CanalVoz();
         
         virtual void inserirUltimaMensagem(Mensagem msg);
-        virtual vector <Mensagem> getMensagens();
+        virtual void getMensagens();
+        virtual bool isMensagemVazia();
 };
 
 
