@@ -50,8 +50,8 @@ ou
 make run_script2
 ```
 
-Dentre as dificuldades, as principais foram acessar as informação da classe filha, em parte devido ao fato da classe pai estar sendo usada como ponteiro no vetor.
-Na função list-messages não consegui fazer que seja exibido o nome de quem enviou apenas seu ID.
+Dentre as dificuldades, as principais foram acessar as informações das classes filhas, em parte devido ao fato da classe pai estar sendo usada como ponteiro no vetor.
+Na função list-messages não consegui fazer que seja exibido o nome de quem enviou, apenas seu ID.
 
 segue o roteiro do script_comandos_parte2.txt
 
