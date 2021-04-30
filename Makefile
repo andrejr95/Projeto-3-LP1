@@ -6,8 +6,7 @@ CC = g++
 CFLAGS  = -std=c++11 -Iinclude -Wall -fsanitize=address -pedantic -g
 
 
-default: concordo_exec
-
+default: concordo_exec create_txt
 
 concordo_exec: bin/concordo.o bin/usuario.o bin/servidor.o bin/canal.o bin/canaltexto.o bin/canalvoz.o bin/executor.o bin/mensagem.o bin/sistema.o
 	$(CC) $(CFLAGS) -o concordo_exec bin/concordo.o bin/usuario.o bin/servidor.o bin/canal.o bin/canaltexto.o bin/canalvoz.o bin/executor.o bin/mensagem.o bin/sistema.o
@@ -40,7 +39,9 @@ bin/mensagem.o:  src/mensagem.cpp include/mensagem.h
 bin/sistema.o:  src/sistema.cpp include/sistema.h include/servidor.h include/usuario.h include/canal.h include/canaltexto.h include/canalvoz.h 
 	$(CC) $(CFLAGS) -c src/sistema.cpp -o bin/sistema.o
 
-
+create_txt:
+	touch usuarios.txt
+	touch servidores.txt
 
 run: default
 	./concordo_exec
@@ -53,7 +54,7 @@ run_script2: default
 
 
 clean: 
-	$(RM) concordo_exec bin/*.o *~
+	$(RM) concordo_exec servidores.txt usuarios.txt bin/*.o *~
 
 
 

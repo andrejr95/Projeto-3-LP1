@@ -20,7 +20,7 @@ Servidor::Servidor(int usuarioDonoId_, string nome_){
 }
 
 //getters
-int Servidor::getUsuarioDonoId(){
+int Servidor::getUsuarioDonoId()const{
     return usuarioDonoId;
 }
 

@@ -50,6 +50,43 @@ ou
 make run_script2
 ```
 
+
+Parte 3:
+
+A primeira parte da função de carregar servidores se encontrar comentada dentro do codigo já que ela está incompleta, já que a função de salvar servidores tambem está incompleta.
+
+Para limpar os arquivos .o , os arquivos txt(que salvam os usuarios e servidores) e o executável criado pelo make basta digitar no console:
+
+```console
+make clean
+```
+Arquivos txt para salvar usuarios servidores são criados ao execultar o make
+para realizar o teste basta utilizar 
+```console
+./concordo < script_comandos_parte2.txt
+
+```
+ou
+
+```console
+make run_script2
+```
+e logo apos
+```console
+./concordo < script_comandos.txt
+
+```
+ou
+
+```console
+make run_script
+```
+para ver que os dados dos usuarios foram salvos e carregados com sucesso.
+
+
+
+Parte 2:
+
 Dentre as dificuldades, as principais foram acessar as informações das classes filhas, em parte devido ao fato da classe pai estar sendo usada como ponteiro no vetor.
 Na função list-messages não consegui fazer que seja exibido o nome de quem enviou, apenas seu ID.
 

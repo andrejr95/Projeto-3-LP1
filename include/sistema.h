@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "servidor.h"
 #include "usuario.h"
  
@@ -19,10 +20,16 @@ class Sistema {
     int usuarioLogadoId; // se 0: não logado, caso contrário guarda o id do usuário logado
     string nomeServidorConectado;
     string nomeCanalConectado;
+    void salvarUsuarios() const;
+    void salvarServidores() const;
+    void carregarUsuarios(); // Carrega os dados de usuários do txt para o sistema
+    void carregarServidores(); // Carrega os dados de servidores do txt para o sistema
 
   public:
     Sistema(); // construtor padrão
     ~Sistema(); // destrutor
+    void salvar() const; // salva os dados do sistema(root) no txt
+    void carregar(); // carrega os dados do txt no sistema(root)
     string quit();
     string create_user (const string email, const string senha, const string nome);
     string login(const string email, const string senha);

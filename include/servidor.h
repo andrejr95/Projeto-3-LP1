@@ -24,7 +24,7 @@ class Servidor {
 		~Servidor();     
 		Servidor (int usuarioDonoId_, string nome_); // construtor para criar um servidor sem descrição e codigo convite
         	//getters
-                int getUsuarioDonoId();
+                int getUsuarioDonoId()const;
                 string getNome() const;
                 string getNomeCanais(int j) const;
                 int getTipo_canal(int j) const;
